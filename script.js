@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const profilePhoto = document.getElementById('dynamic-profile-photo');
     const mockImage = new Image();
-    mockImage.src = '/Users/danielbarboza/Downloads/image-1753081659519.jpg';
+    mockImage.src = './assets/profile-picture.jpg';
     mockImage.onload = function() {
         profilePhoto.src = mockImage.src;
     };
@@ -92,14 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         function typeWriter() {
             if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
                 i++;
+                heroTitle.innerHTML = `<mark>${text.substring(0, i)}&nbsp;</mark>`;
                 setTimeout(typeWriter, 100);
             }
         }
         
-        // Start typing effect after a short delay
-        setTimeout(typeWriter, 1000);
+        // Start typing effect after a short delay if needed
+        setTimeout(typeWriter, 0);
     }
 
     // Add scroll-based header background change (if we add a fixed header later)
@@ -116,54 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         lastScrollTop = scrollTop;
-    });
-
-    // Add click tracking for project links (for analytics)
-    const projectLinks = document.querySelectorAll('.project-link');
-    projectLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Here you could add analytics tracking
-            console.log('Project link clicked:', this.textContent);
-            
-            // If the link is a placeholder (#), prevent navigation
-            if (this.getAttribute('href') === '#') {
-                e.preventDefault();
-                alert('This is a placeholder link. Replace with actual project URL.');
-            }
-        });
-    });
-
-    // Add form validation for contact form (if added later)
-    const contactForm = document.querySelector('#contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Basic form validation
-            const email = this.querySelector('input[type="email"]');
-            const message = this.querySelector('textarea');
-            
-            if (!email.value || !message.value) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Here you would typically send the form data
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
-        });
-    }
-
-    // Add keyboard navigation support
-    document.addEventListener('keydown', function(e) {
-        // Add any keyboard shortcuts here
-        if (e.key === 'Escape') {
-            // Close any modals or overlays
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                modal.style.display = 'none';
-            });
-        }
     });
 
     // Add performance monitoring

@@ -66,6 +66,12 @@ body {
     opacity: 0.9;
 }
 
+
+.hero h1 mark {
+    background-color: white;
+    color: black;        /* or whatever your hero text‐color is */
+}
+
 .bio {
     font-size: 1.125rem;
     line-height: 1.8;
@@ -75,6 +81,7 @@ body {
 }
 
 .contact-links {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 2rem;
