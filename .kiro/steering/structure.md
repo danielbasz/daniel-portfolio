@@ -1,4 +1,51 @@
-# Project Structure
+# Project Structure (Next.js migration)
+
+## Repository Layout
+```
+portfolio-nextjs/
+├── .github/workflows/ci.yml          # Lint, test, build, deploy
+├── next.config.mjs                   # Next.js config (static export)
+├── tsconfig.json                     # (Optional) TypeScript config
+├── package.json                      # Scripts & deps
+├── public/                           # Static assets served as-is
+│   ├── images/                       # Optimised originals
+│   └── favicons/
+├── src/
+│   ├── app/ or pages/                # Next.js routing (TBD 13/14 app router)
+│   ├── components/                   # Reusable React components
+│   ├── styles/                       # SCSS modules & globals
+│   ├── data/                         # JSON/YAML driving content (projects, jobs)
+│   └── hooks/ utils/                 # Helper functions
+├── playwright.config.ts              # Playwright setup
+└── README.md
+```
+
+## Content Data Flow
+- Structured data lives in `src/data/*.yml` and is imported into React components to render cards.
+- Allows easy content updates without touching JSX.
+
+## Styling Architecture
+- **SCSS Modules** for component-scoped styles: `Component.module.scss`.
+- Global design-tokens in `styles/_variables.scss`, consumed via `:root` CSS variables for easy theming.
+
+## Testing Scaffold
+- **Playwright** E2E: navigation, contact links, accessibility snapshot.
+- **Lighthouse CI**: budgets for performance/regression.
+- **pa11y**: automated accessibility checks.
+
+## Git Strategy
+- Default branch `main` on new repo.
+- Conventional Commits + Semantic Release (optional) for versioning.
+- Pull Request template referencing Context7 docs lookup rule.
+
+## Deployment Targets
+- **Primary:** GitHub Pages (static) via `next export`.
+- **Alternate:** Vercel for instant previews.
+
+## Responsive Breakpoints (unchanged)
+- Desktop: ≥ 1200 px
+- Tablet: 768 – 1199 px
+- Mobile: < 768 px
 
 ## Root Directory
 ```

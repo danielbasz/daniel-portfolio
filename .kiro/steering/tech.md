@@ -1,4 +1,43 @@
-# Technology Stack
+# Technology Stack (Next.js edition)
+
+## Core Technologies
+- **Framework**: Next.js 14 (React 18, App Router).
+- **Language**: JavaScript (ES2023) — optional gradual adoption of TypeScript.
+- **Styling**: SCSS Modules + CSS Variables; PostCSS with Autoprefixer.
+- **Testing**: Playwright 1.x for E2E; Jest/React Testing Library for unit tests (future).
+- **Linting/Formatting**: ESLint, Stylelint, Prettier.
+- **CI/CD**: GitHub Actions → lint → test → build (`next build && next export`) → deploy to `gh-pages`.
+
+## Future Back-End
+- Java Spring Boot micro-service to power contact form and persistent CMS data, deployed separately (phase 3).
+
+## Key Next.js Benefits
+- File-system routing and dynamic metadata.
+- Built-in Image, Font, and Script optimisations.
+- Automatic code-splitting & prefetching.
+
+## Common Commands
+```bash
+# Dev server with SCSS modules
+npm run dev      # next dev
+
+# Static export for GitHub Pages
+npm run build    # next build && next export
+
+# Playwright tests
+npx playwright test --reporter=line
+```
+
+## Performance & Accessibility Budgets
+- LCP ≤ 1.5 s (mobile 3G).
+- CLS ≤ 0.1.
+- Lighthouse A11y ≥ 95.
+
+## External Integrations
+- **Context7 MCP hook**: CI script searches https://context7.com/ for relevant docs before running implementation scripts.
+
+---
+*Last updated 2025-07-22.*
 
 ## Core Technologies
 - **Frontend**: Vanilla HTML5, CSS3, JavaScript (ES6+)
